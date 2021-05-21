@@ -2,13 +2,15 @@ package com.p5.adoption.model;
 
 public class Animal {
 
-    private String name;
-    private String photoUrl;
+    protected Integer id;
+    protected String name;
+    protected String photoUrl;
 
 
-    public Animal(String name, String photoUrl){
+    public Animal(String name, String photoUrl, Integer id){
         this.name = name;
         this.photoUrl = photoUrl;
+        this.id = id;
 
     }
 
@@ -42,6 +44,15 @@ public class Animal {
 
     public Animal setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Animal setId(Integer id) {
+        this.id = id;
         return this;
     }
 }
