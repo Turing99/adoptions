@@ -3,7 +3,6 @@ package com.p5.adoption.service;
 import com.p5.adoption.model.CatDTO;
 import com.p5.adoption.model.ListDTO;
 import com.p5.adoption.model.adapters.CatAdapter;
-import com.p5.adoption.repository.cats.Cat;
 import com.p5.adoption.repository.cats.CatRepository;
 import org.springframework.stereotype.Service;
 

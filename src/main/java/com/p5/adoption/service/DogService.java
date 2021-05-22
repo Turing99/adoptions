@@ -1,6 +1,8 @@
 package com.p5.adoption.service;
 
-import com.p5.adoption.repository.dogs.Dog;
+import com.p5.adoption.model.DogDTO;
+import com.p5.adoption.model.ListDTO;
+import com.p5.adoption.model.adapters.DogAdapter;
 import com.p5.adoption.repository.dogs.DogRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,30 +19,34 @@ public class DogService {
     }
 
 
-    public void addDog(Dog dog) {
-        if (dog.getName() == null && dog.getUrl() == null) {
+    public void addDog(DogDTO dogDTO) {
+        if (dogDTO.getName() == null && dogDTO.getPhotoUrl() == null) {
             throw new RuntimeException("Cat must have a name and a photo!");
         }
 
-        Dog dogToSave = new Dog()
-                .setName(dog.getName())
-                .setUrl(dog.getUrl());
-
-        dogRepo.save(dogToSave);
+        dogRepo.save(DogAdapter.fromDto(dogDTO));
 
     }
 
-    public List<Dog> findAll() {
-        return dogRepo.findAll();
+    public ListDTO<DogDTO> findAll() {
+        List<DogDTO> dogs = DogAdapter.toListDTO(dogRepo.findAll());
+        Long totalCount = dogRepo.count();
+        return new ListDTO<DogDTO>(Math.toIntExact(totalCount),dogs);
+
     }
 
-    public Dog findDog(String url)
+    public DogDTO findDog(String url)
     {
         if(url == null || url.equals(""))
         {
             throw new RuntimeException("Must specify url!");
         }
 
-        return dogRepo.findDogByUrl(url);
+        return DogAdapter.toDto(dogRepo.findDogByUrl(url));
     }
+
+//    public DogDTO findDogById(Integer id)
+//    {
+//        return DogAdapter.toDto(dogRepo.findDogById(id));
+//    }
 }

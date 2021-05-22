@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface DogRepository extends JpaRepository<Dog,Integer> {
 
     Dog findDogByUrl(String url);
+    Dog findDogById(Integer id);
 
 }
