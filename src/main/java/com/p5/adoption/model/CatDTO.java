@@ -1,6 +1,6 @@
 package com.p5.adoption.model;
 
-public class CatDTO extends Animal
+public class CatDTO extends AnimalDTO
 {
     public CatDTO(String name, String photoUrl, Integer id) {
         super(name, photoUrl,id);

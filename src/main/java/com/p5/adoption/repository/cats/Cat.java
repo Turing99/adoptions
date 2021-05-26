@@ -1,43 +1,27 @@
 package com.p5.adoption.repository.cats;
 
+import com.p5.adoption.repository.animals.Animal;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 
 @Entity
-public class  Cat {
+public class  Cat  extends Animal {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String name;
-    private String url;
+    private String purrLevel;
 
-    public Integer getId() {
-        return id;
+    public Cat() {
     }
 
-    public Cat setId(Integer id) {
-        this.id = id;
+    public String getPurrLevel() {
+        return purrLevel;
+    }
+
+    public Cat setPurrLevel(String purrLevel) {
+        this.purrLevel = purrLevel;
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public Cat setName(String name) {
-        this.name = name;
-        return this;
-    }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public Cat setUrl(String url) {
-        this.url = url;
-        return this;
-    }
 }

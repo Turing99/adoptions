@@ -1,6 +1,8 @@
 package com.p5.adoption.repository.dogs;
 
 
+import com.p5.adoption.repository.animals.Animal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,37 +10,20 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Dog {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String name;
-    private String url;
+public class Dog extends Animal {
 
-    public Integer getId() {
-        return id;
+    private String size;
+
+    public Dog() {
     }
 
-    public Dog setId(Integer id) {
-        this.id = id;
+    public String getSize() {
+        return size;
+    }
+
+    public Dog setSize(String size) {
+        this.size = size;
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Dog setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public Dog setUrl(String url) {
-        this.url = url;
-        return this;
-    }
 }

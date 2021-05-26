@@ -1,8 +1,5 @@
 package com.p5.adoption.api.controllers;
 
-
-
-
 import com.p5.adoption.model.DogDTO;
 import com.p5.adoption.model.ListDTO;
 import com.p5.adoption.service.DogService;
@@ -33,10 +30,10 @@ public class DogController {
         dogService.addDog(dog);
     }
 
-    @GetMapping("/{url}")
-    public ResponseEntity<DogDTO>getDogById(@PathVariable("url") String url)
+    @GetMapping("/{name}")
+    public ResponseEntity<DogDTO>getDogById(@PathVariable("name") String name)
     {
-        return ResponseEntity.ok(dogService.findDog(url));
+        return ResponseEntity.ok(dogService.findDog(name));
     }
 
 //    @GetMapping("/{id}")

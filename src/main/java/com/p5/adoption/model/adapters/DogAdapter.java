@@ -13,12 +13,12 @@ public class DogAdapter {
         if(dogDTO.getName().equals("")){
             dogDTO.setName("Generic cat");
         }
-        return new Dog().setName(dogDTO.getName()).setUrl(dogDTO.getPhotoUrl());
+        return (Dog) new Dog().setName(dogDTO.getName()).setPhotoUrl(dogDTO.getPhotoUrl());
     }
 
     public static DogDTO toDto(Dog dog)
     {
-        return new DogDTO(dog.getName(), dog.getUrl(), dog.getId());
+        return new DogDTO(dog.getName(), dog.getPhotoUrl(), dog.getId());
     }
 
 

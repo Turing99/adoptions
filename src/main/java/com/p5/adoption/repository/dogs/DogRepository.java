@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DogRepository extends JpaRepository<Dog,Integer> {
 
-    Dog findDogByUrl(String url);
+    Dog findDogByName(String name);
     Dog findDogById(Integer id);
 
 }

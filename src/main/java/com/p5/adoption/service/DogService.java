@@ -35,14 +35,14 @@ public class DogService {
 
     }
 
-    public DogDTO findDog(String url)
+    public DogDTO findDog(String name)
     {
-        if(url == null || url.equals(""))
+        if(name == null || name.equals(""))
         {
             throw new RuntimeException("Must specify url!");
         }
 
-        return DogAdapter.toDto(dogRepo.findDogByUrl(url));
+        return DogAdapter.toDto(dogRepo.findDogByName(name));
     }
 
 //    public DogDTO findDogById(Integer id)
