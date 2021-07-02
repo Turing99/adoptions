@@ -1,4 +1,4 @@
-package com.p5.adoption.security;
+package com.p5.adoption.users;
 
 import com.p5.adoption.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;

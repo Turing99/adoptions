@@ -1,6 +1,7 @@
 package com.p5.adoption.security;
 
 import com.p5.adoption.users.User;
+import com.p5.adoption.users.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
