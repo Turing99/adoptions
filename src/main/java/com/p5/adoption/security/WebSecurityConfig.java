@@ -13,7 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import javax.sql.DataSource;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity //This annotation tells the spring to set certain security filters
+//This class performs the security configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
     private final MyUserDetailsService userDetailsService;
@@ -28,6 +29,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     }
 
     @Override
+    //Configure what type of configuration it uses
+    //Ons: Basic Authentication uses the base64 algorithm
     protected void configure(HttpSecurity http) throws Exception
     {
         http.authorizeRequests()
@@ -38,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     }
 
     @Override
+//    We tell it through the AuthenticationManagerBuilder class how to do the authentication
     protected void configure(AuthenticationManagerBuilder auth) throws Exception
     {
         auth

@@ -24,16 +24,17 @@ public class MyUserDetailsService implements UserDetailsService {
 
 
     @Override
+    // username -> what we send in postman to the user
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Optional<User>userOptional = userRepository.findByEmail(username);
+        Optional<User>userOptional = userRepository.findByEmail(username); //userOptional -> user taken from DB
 
-        if(!userOptional.isPresent())
+        if(!userOptional.isPresent()) // check if the user is in db
         {
             throw new UsernameNotFoundException(username);
         }
 
-        return new UserPrincipal(userOptional.get());
+        return new UserPrincipal(userOptional.get()); // UserPrincipal - >current user
     }
 
     //Initialize DB with a default user
