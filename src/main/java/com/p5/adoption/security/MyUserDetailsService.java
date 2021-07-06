@@ -1,5 +1,7 @@
 package com.p5.adoption.security;
 
+import com.p5.adoption.model.UserDTO;
+import com.p5.adoption.model.adapters.UserAdapter;
 import com.p5.adoption.users.User;
 import com.p5.adoption.users.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -38,21 +40,39 @@ public class MyUserDetailsService implements UserDetailsService {
     }
 
     //Initialize DB with a default user
-    @Bean
-    private CommandLineRunner setUpDefaultUser()
+//    @Bean
+//    private CommandLineRunner setUpDefaultUser()
+//    {
+//        return args -> {
+//            final String defaultEmail = "animalshelter@pentastagiu.io";
+//            final String defaultPassword = "password";
+//
+//            Optional<User> defaultUser = userRepository.findByEmail(defaultEmail);
+//
+//            if (!defaultUser.isPresent())
+//            {
+//                userRepository.save(new User()
+//                        .setEmail(defaultEmail)
+//                        .setPassword(passwordEncoder.encode(defaultPassword)));
+//            }
+//        };
+//    }
+
+    public UserDTO addUser(UserDTO userDTO)
     {
-        return args -> {
-            final String defaultEmail = "animalshelter@pentastagiu.io";
-            final String defaultPassword = "password";
+        if(userDTO.getEmail() == null && userDTO.getPassword() == null)
+        {
+            throw new RuntimeException("User must have a email and a password!");
+        }
 
-            Optional<User> defaultUser = userRepository.findByEmail(defaultEmail);
+        userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 
-            if (!defaultUser.isPresent())
-            {
-                userRepository.save(new User()
-                        .setEmail(defaultEmail)
-                        .setPassword(passwordEncoder.encode(defaultPassword)));
-            }
-        };
+        Optional<User> defaultUser = userRepository.findByEmail(userDTO.getEmail());
+
+        if (!defaultUser.isPresent()) {
+            return UserAdapter.toDTO(userRepository.save(UserAdapter.fromDto(userDTO)));
+        }
+        else
+            return null;
     }
 }
