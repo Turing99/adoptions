@@ -30,14 +30,14 @@ public class UserController {
         return ResponseEntity.ok(UserStore.available);
     }
 
-    @PostMapping
-    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDto) {
-        if (userDetailsService.addUser(userDto) == null)
-            return ResponseEntity.badRequest().body(userDto);
-        else
-            return ResponseEntity.ok(userDetailsService.addUser(userDto));
+//    @PostMapping
+//    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDto) {
+//        if (userDetailsService.addUser(userDto) == null)
+//            return ResponseEntity.badRequest().body(userDto);
+//        else
+//            return ResponseEntity.ok(userDetailsService.addUser(userDto));
         //  userDetailsService.setUpDefaultUser(userDto);
-    }
+//    }
 
     @PutMapping("/{email}")
     public void updateUser(@PathVariable(name = "email") String email, @RequestBody UserDTO updateUser) {

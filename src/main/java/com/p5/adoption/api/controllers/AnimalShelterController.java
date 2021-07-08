@@ -3,13 +3,14 @@ package com.p5.adoption.api.controllers;
 import com.p5.adoption.model.AnimalShelterDTO;
 import com.p5.adoption.service.AnimalShelterService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/shelters")
+@RequestMapping("/api/v1/shelters")
 public class AnimalShelterController
 {
     private final AnimalShelterService shelterService;

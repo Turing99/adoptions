@@ -4,7 +4,10 @@ import com.p5.adoption.model.CatDTO;
 import com.p5.adoption.model.ListDTO;
 import com.p5.adoption.service.CatService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 
 @RestController
@@ -18,7 +21,8 @@ public class CatController {
     }
 
     @GetMapping
-    public ResponseEntity<ListDTO<CatDTO>> getAllCats()
+    @PreAuthorize("principal.username.startsWith('animal') && hasRole('MOD')")
+    public ResponseEntity<ListDTO<CatDTO>> getAllCats(Principal principal)
     {
         return ResponseEntity.ok(catService.findAll());
     }

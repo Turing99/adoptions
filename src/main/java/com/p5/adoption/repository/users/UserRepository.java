@@ -1,6 +1,5 @@
-package com.p5.adoption.users;
+package com.p5.adoption.repository.users;
 
-import com.p5.adoption.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

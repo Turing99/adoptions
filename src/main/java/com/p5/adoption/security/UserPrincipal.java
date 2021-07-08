@@ -1,12 +1,14 @@
 package com.p5.adoption.security;
 
-import com.p5.adoption.users.User;
+import com.p5.adoption.repository.users.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class UserPrincipal implements UserDetails {
 
@@ -19,7 +21,12 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("Role User"));
+        return principal.getUserRoleSet().stream()
+                .filter(Objects::nonNull)
+                .filter(el-> el.getRole() != null)
+                .filter(el -> !el.getRole().name().isEmpty())
+                .map(el->new SimpleGrantedAuthority(el.getRole().name()))
+                .collect(Collectors.toSet());
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.p5.adoption.model.DogDTO;
 import com.p5.adoption.model.ListDTO;
 import com.p5.adoption.service.DogService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 

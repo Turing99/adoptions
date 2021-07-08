@@ -1,7 +1,7 @@
 package com.p5.adoption.model.adapters;
 import com.p5.adoption.model.UserDTO;
 import com.p5.adoption.security.BCryptPasswordEncoder;
-import com.p5.adoption.users.User;
+import com.p5.adoption.repository.users.User;
 
 import java.util.ArrayList;
 import java.util.List;
