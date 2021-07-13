@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class RoleHierarchyConfig extends GlobalMethodSecurityConfiguration{
 
-
+// se creeaza ierarhia de roluri
     @Bean
     public RoleHierarchy roleHierarchy()
     {
@@ -25,7 +25,7 @@ public class RoleHierarchyConfig extends GlobalMethodSecurityConfiguration{
         return roleHierarchy;
     }
 
-
+//se seteaza ierarhia
     @Override
     protected MethodSecurityExpressionHandler createExpressionHandler() {
 

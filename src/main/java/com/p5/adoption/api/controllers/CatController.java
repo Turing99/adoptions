@@ -21,6 +21,7 @@ public class CatController {
     }
 
     @GetMapping
+//am facut autorizarea la nivel de metoda, insa si aici primesc forbidden
     @PreAuthorize("principal.username.startsWith('animal') && hasRole('MOD')")
     public ResponseEntity<ListDTO<CatDTO>> getAllCats(Principal principal)
     {

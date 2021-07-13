@@ -16,7 +16,8 @@ public class AnimalController
     // OLD WAY: NO BOENO @RequestMapping(method = RequestMethod.GET, value = "/hello")
     //call: /api/v1/animals/hello
     @GetMapping("/hello")
-    @PreAuthorize("permitAll()")
+    // aici am problema ca imi merge, chiar daca am comentat "permitAll" si teoretic n-ar trebui deoarece nu este autentificat
+//    @PreAuthorize("permitAll()")
     public ResponseEntity<String> greetOwner(@RequestParam(name = "name",required = false) String ownerName)
     {
         String name = ownerName == null ? "world" : ownerName;

@@ -44,8 +44,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                // aici nu imi intoarce nimic(Forbidden), chiar daca am setat rolul ca fiind user < moderator
                 .antMatchers(HttpMethod.GET, "/api/v1/shelters/*").hasRole("USER")
-  //              .antMatchers(HttpMethod.POST,"/api/v1/shelters/*").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/api/v1/shelters/*").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
