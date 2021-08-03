@@ -15,6 +15,7 @@ public class User {
     private String email;
     private String password;
 
+// !! cascade = CascadeType.ALL => a trebuit eliminata deoarece persista cu o sesiune veche inchisa
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
