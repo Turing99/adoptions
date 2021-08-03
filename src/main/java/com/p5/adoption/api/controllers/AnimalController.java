@@ -10,13 +10,13 @@ import java.util.List;
 
 @RestController // -> un controller ce trimite un responsebody pe request
 @RequestMapping("/api/v1/animals")
-@PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAnonymous()")
 public class AnimalController
 {
     // OLD WAY: NO BOENO @RequestMapping(method = RequestMethod.GET, value = "/hello")
     //call: /api/v1/animals/hello
     @GetMapping("/hello")
-    @PreAuthorize("permitAll()")
+//    @PreAuthorize("permitAll()")
     public ResponseEntity<String> greetOwner(@RequestParam(name = "name",required = false) String ownerName)
     {
         String name = ownerName == null ? "world" : ownerName;

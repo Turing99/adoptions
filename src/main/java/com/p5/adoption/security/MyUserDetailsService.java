@@ -54,6 +54,7 @@ public class MyUserDetailsService implements UserDetailsService {
             final String defaultEmail = "animalshelter@pentastagiu.io";
             final String defaultPassword = "password";
 
+            // setez un rol(moderator) default in db
             Role moderatorRole =  roleRepository.findByRole(RolesEnum.ROLE_MOD).orElseGet(() -> {
                 Role newRole = new Role().setRole(RolesEnum.ROLE_MOD);
                 return roleRepository.save(newRole);

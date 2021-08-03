@@ -21,6 +21,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        //aici am returnat rolurile din principal, initial avand hardcodat un role user
         return principal.getUserRoleSet().stream()
                 .filter(Objects::nonNull)
                 .filter(el-> el.getRole() != null)
