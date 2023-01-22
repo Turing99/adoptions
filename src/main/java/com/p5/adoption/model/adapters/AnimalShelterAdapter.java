@@ -38,5 +38,4 @@ public class AnimalShelterAdapter
         }
         return dtos;
     }
-
 }
